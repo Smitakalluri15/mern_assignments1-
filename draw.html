@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Simple Scene with Trees</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(to top, #ADD8E6, #f1faee); /* soft sky */
+      height: 100vh;
+      overflow: hidden;
+    }
+
+    .scene {
+      position: relative;
+      width: 100vw;
+      height: 100vh;
+    }
+
+    .sun {
+      position: absolute;
+      width: 150px;
+      height: 150px;
+      background: radial-gradient(circle, #ffd700, #ffa500);
+      border-radius: 50%;
+      top: 5%;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 1;
+    }
+
+    .mountain {
+      position: absolute;
+      width: 55%;
+      height: 75%;
+      background: #6b4c3b; /* dark brown mountain */
+      bottom: 0;
+      z-index: 2;
+    }
+    .mountain.left {
+      left: 0;
+      clip-path: polygon(0 100%, 0 40%, 40% 10%, 70% 40%, 100% 100%);
+    }
+    .mountain.right {
+      right: 0;
+      clip-path: polygon(0 100%, 30% 40%, 60% 10%, 100% 40%, 100% 100%);
+    }
+
+    .ground {
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+      height: 30%;
+      background: lightgreen; /* soft green ground */
+      z-index: 4;
+      overflow: hidden;
+    }
+
+    /* Simplified few grass blades without nth-child */
+    .grass-blade {
+      position: absolute;
+      bottom: 0;
+      width: 2px;
+      height: 12px;
+      background: #90EE90;
+      border-radius: 50% 50% 0 0;
+      transform-origin: bottom center;
+    }
+    .grass1 { left: 10px;  transform: rotate(-10deg); }
+    .grass2 { left: 30px;  transform: rotate(8deg); }
+    .grass3 { left: 60px;  transform: rotate(-6deg); }
+    .grass4 { left: 90px;  transform: rotate(5deg); }
+    .grass5 { left: 120px; transform: rotate(-12deg); }
+
+    .house {
+      position: absolute;
+      bottom: 18%;
+      left: 10%;
+      width: 140px;
+      height: 100px;
+      background: #d9cab3;
+      border: 2px solid #6b4c3b;
+      box-shadow: 4px 4px 10px rgba(0,0,0,0.3);
+      z-index: 5;
+    }
+
+    .roof {
+      position: absolute;
+      top: -50px;
+      left: -10px;
+      width: 160px;
+      height: 60px;
+      background: #a35c4b;
+      clip-path: polygon(50% 0%, 100% 100%, 0% 100%);
+      z-index: 6;
+    }
+
+    .window {
+      position: absolute;
+      width: 25px;
+      height: 25px;
+      background: #7289ab;
+      top: 25px;
+      border: 2px solid #4c5c72;
+      box-sizing: border-box;
+    }
+    .window.left {
+      left: 15px;
+    }
+    .window.right {
+      right: 15px;
+    }
+
+    .door {
+      position: absolute;
+      bottom: 0;
+      left: 55px;
+      width: 30px;
+      height: 50px;
+      background: #8a6f5b;
+      border: 2px solid #5b4c3a;
+      box-sizing: border-box;
+    }
+
+    /* Trees replacing the human */
+    .tree {
+      position: absolute;
+      bottom: 28%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      z-index: 5;
+    }
+    .tree1 { left: 30%; }
+    .tree2 { left: 45%; }
+    .tree3 { left: 60%; }
+    .tree4 { left: 75%; }
+
+    .tree-trunk {
+      width: 15px;
+      height: 50px;
+      background: #5b3a1a;
+      border-radius: 5px;
+    }
+    
+    .tree-leaves::before,
+    .tree-leaves::after {
+      content: '';
+      position: absolute;
+      background: #3c6e47;
+      border-radius: 50%;
+    }
+    .tree-leaves::before {
+      width: 50px;
+      height: 50px;
+      top: -20px;
+      left: -20px;
+    }
+    .tree-leaves::after {
+      width: 50px;
+      height: 50px;
+      top: -20px;
+      right: -20px;
+    }
+  </style>
+</head>
+<body>
+  <div class="scene">
+    <div class="sun"></div>
+    <div class="mountain left"></div>
+    <div class="mountain right"></div>
+
+    <div class="ground">
+      <div class="grass-blade grass1"></div>
+      <div class="grass-blade grass2"></div>
+      <div class="grass-blade grass3"></div>
+      <div class="grass-blade grass4"></div>
+      <div class="grass-blade grass5"></div>
+    </div>
+
+    <div class="house">
+      <div class="roof"></div>
+      <div class="window left"></div>
+      <div class="window right"></div>
+      <div class="door"></div>
+    </div>
+
+    <div class="tree tree1">
+      <div class="tree-trunk"></div>
+      <div class="tree-leaves"></div>
+    </div>
+    <div class="tree tree2">
+      <div class="tree-trunk"></div>
+      <div class="tree-leaves"></div>
+    </div>
+    <div class="tree tree3">
+      <div class="tree-trunk"></div>
+      <div class="tree-leaves"></div>
+    </div>
+    <div class="tree tree4">
+      <div class="tree-trunk"></div>
+      <div class="tree-leaves"></div>
+    </div>
+  </div>
+</body>
+</html>
